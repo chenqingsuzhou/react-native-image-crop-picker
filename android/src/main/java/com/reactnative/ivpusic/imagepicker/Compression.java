@@ -2,7 +2,6 @@ package com.reactnative.ivpusic.imagepicker;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
-import android.os.Environment;
 import android.util.Log;
 
 import com.facebook.react.bridge.Promise;
@@ -31,8 +30,7 @@ public class Compression {
         Log.d("image-crop-picker", "Image compression activated");
         Compressor.Builder builder = new Compressor.Builder(activity)
                 .setCompressFormat(Bitmap.CompressFormat.JPEG)
-                .setDestinationDirectoryPath(Environment.getExternalStoragePublicDirectory(
-                        Environment.DIRECTORY_PICTURES).getAbsolutePath());
+                .setDestinationDirectoryPath(activity.getFilesDir().getPath());
 
         if (quality == null) {
             Log.d("image-crop-picker", "Compressing image with quality 100");
